@@ -23,14 +23,12 @@ class MainActivity : AppCompatActivity() {
     private fun check(view: View) {
         val clipManager = applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
-        if (clipManager.hasPrimaryClip()) {
-            val data = clipManager.primaryClip?.getItemAt(0)?.text
-            val result = "Clipboard Data: $data"
+        val data = clipManager.hasPrimaryClip()
+        val result = "Clipboard hasPrimaryClip: $data"
 
-            Snackbar.make(view, result, Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        Snackbar.make(view, result, Snackbar.LENGTH_LONG)
+            .setAction("Action", null).show()
 
-            findViewById<EditText>(R.id.textview_first).setText(result)
-        }
+        findViewById<EditText>(R.id.textview_first).setText(result)
     }
 }
